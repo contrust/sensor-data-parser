@@ -1,3 +1,5 @@
+import logging
+
 from sqlalchemy import Column, Float, Integer, String
 from sqlalchemy.orm import validates
 
@@ -28,9 +30,7 @@ class PressurePacket(Base):
             <= address
             < PRESSURE_PACKET_CURRENT_VALUE_COUNTER_MAX
         ):
-            raise FieldValueValidationException(
-                "current_value_counter", address
-            )
+            raise FieldValueValidationException(key, address)
         return address
 
     @validates("pressure_value")
@@ -40,11 +40,11 @@ class PressurePacket(Base):
             <= address
             < PRESSURE_PACKET_PRESSURE_VALUE_MAX
         ):
-            raise FieldValueValidationException("pressure_value", address)
+            raise FieldValueValidationException(key, address)
         return address
 
     @validates("status")
     def validate_status(self, key, address):
         if address != PRESSURE_PACKET_STATUS:
-            raise FieldValueValidationException("status", address)
+            raise FieldValueValidationException(key, address)
         return address
