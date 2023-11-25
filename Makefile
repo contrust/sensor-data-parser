@@ -12,3 +12,7 @@ check_lint:
 lock:
 	poetry lock
 	sudo chown -R ${USER} poetry.lock
+install:
+	pip install --no-cache-dir poetry && \
+	poetry config virtualenvs.create false && \
+	poetry install --no-interaction --no-root
