@@ -32,7 +32,7 @@ def pressure_value(faker: Faker) -> int:
 
 
 @pytest.fixture()
-def correct_pressure_packet(
+def pressure_packet(
     status, current_value_counter, pressure_value
 ) -> PressurePacket:
     return PressurePacket(

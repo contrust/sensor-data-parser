@@ -18,13 +18,13 @@ def test_hex_string_to_pressure_packet_raise_parsing_exception_when_len_not_8(
 
 
 def test_hex_string_to_pressure_packet_returns_the_same_values(
-    correct_pressure_packet,
+    pressure_packet,
 ):
-    hex_string = pressure_packet_to_hex_string(correct_pressure_packet)
-    packet = hex_string_to_pressure_packet(hex_string)
-    assert packet.status == correct_pressure_packet.status
+    hex_string = pressure_packet_to_hex_string(pressure_packet)
+    parsed_packet = hex_string_to_pressure_packet(hex_string)
+    assert parsed_packet.status == pressure_packet.status
     assert (
-        packet.current_value_counter
-        == correct_pressure_packet.current_value_counter
+        parsed_packet.current_value_counter
+        == pressure_packet.current_value_counter
     )
-    assert packet.pressure_value == correct_pressure_packet.pressure_value
+    assert parsed_packet.pressure_value == pressure_packet.pressure_value
