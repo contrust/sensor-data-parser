@@ -7,7 +7,7 @@ from src.expections.parsing_exception import ParsingException
 @pytest.mark.parametrize("hex_string", ["ll", "ao", "x"])
 def test_not_hex_string_raises_parsing_exception(hex_string):
     with pytest.raises(ParsingException):
-        hex_string_to_int("ll")
+        hex_string_to_int(hex_string)
 
 
 @pytest.mark.parametrize(
