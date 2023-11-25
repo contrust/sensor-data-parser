@@ -3,12 +3,12 @@ test:
 coverage:
 	pytest --cov
 lint:
-	isort src tests
-	black --config pyproject.toml src tests
+	isort .
+	black --config pyproject.toml .
 check_lint:
-	isort --check --diff src tests
-	black --config pyproject.toml --check src tests
-	flake8 --config pyproject.toml src tests
+	isort --check --diff .
+	black --config pyproject.toml --check .
+	flake8 --config pyproject.toml .
 lock:
 	poetry lock
 	sudo chown -R ${USER} poetry.lock
