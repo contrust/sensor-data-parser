@@ -1,4 +1,4 @@
-name: Build docker image
+name: Build and push docker image, lint check and show coverage
 
 on:
   push:
@@ -30,3 +30,9 @@ jobs:
         file: ./Dockerfile
         push: true
         tags: ${{ secrets.DOCKER_USERNAME }}/sensor-data-parser:${{github.ref_name }}
+
+    - name: Check lint
+      run: docker run ${{ secrets.DOCKER_USERNAME }}/sensor-data-parser:${{github.ref_name }} make check_lint
+
+    - name: Show coverage
+      run: docker run ${{ secrets.DOCKER_USERNAME }}/sensor-data-parser:${{github.ref_name }} make coverage
