@@ -1,9 +1,9 @@
+from src.converters.hex_string_to_int import hex_string_to_int
 from src.expections.parsing_exception import ParsingException
 from src.models.pressure_packet import PressurePacket
-from src.parsing.hex_string_to_int import hex_string_to_int
 
 
-def hex_string_to_packet(hex_string: str) -> PressurePacket | None:
+def hex_string_to_pressure_packet(hex_string: str) -> PressurePacket | None:
     if len(hex_string) != 8:
         raise ParsingException("The length of the string is not equal to 8.")
     return PressurePacket(
