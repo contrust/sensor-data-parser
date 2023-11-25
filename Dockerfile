@@ -6,12 +6,11 @@ RUN apt update && \
     apt install make && \
     rm -rf /var/lib/apt/lists/*
 
-COPY pyproject.toml poetry.lock ./
+COPY pyproject.toml poetry.lock Makefile ./
 
 RUN make install && \
     rm -rf poetry.lock
 
-COPY Makefile Makefile
 COPY main.py main.py
 COPY ./src ./src
 COPY ./tests ./tests
