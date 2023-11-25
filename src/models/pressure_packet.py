@@ -8,7 +8,9 @@ from src.constants import (
     PRESSURE_PACKET_PRESSURE_VALUE_MIN,
     PRESSURE_PACKET_STATUS,
 )
-from src.expections.validation_exception import ValidationException
+from src.expections.field_value_validation_exception import (
+    FieldValueValidationException,
+)
 from src.models.base import Base
 
 
@@ -26,7 +28,9 @@ class PressurePacket(Base):
             <= address
             < PRESSURE_PACKET_CURRENT_VALUE_COUNTER_MAX
         ):
-            raise ValidationException("The value is out of range.")
+            raise FieldValueValidationException(
+                "current_value_counter", address
+            )
         return address
 
     @validates("pressure_value")
@@ -36,13 +40,11 @@ class PressurePacket(Base):
             <= address
             < PRESSURE_PACKET_PRESSURE_VALUE_MAX
         ):
-            raise ValidationException("The value is out of range.")
+            raise FieldValueValidationException("pressure_value", address)
         return address
 
     @validates("status")
     def validate_status(self, key, address):
         if address != PRESSURE_PACKET_STATUS:
-            raise ValidationException(
-                f"The value is not equal to {PRESSURE_PACKET_STATUS}."
-            )
+            raise FieldValueValidationException("status", address)
         return address
