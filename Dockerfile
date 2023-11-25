@@ -8,9 +8,7 @@ RUN apt update && \
 
 COPY pyproject.toml poetry.lock ./
 
-RUN pip install --no-cache-dir poetry && \
-    poetry config virtualenvs.create false && \
-    poetry install --no-interaction --no-root && \
+RUN make install && \
     rm -rf poetry.lock
 
 COPY Makefile Makefile
