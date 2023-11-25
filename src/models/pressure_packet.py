@@ -24,27 +24,27 @@ class PressurePacket(Base):
     pressure_value = Column(Float())
 
     @validates("current_value_counter")
-    def validate_current_value_counter(self, key, address):
+    def validate_current_value_counter(self, key, value):
         if not (
             PRESSURE_PACKET_CURRENT_VALUE_COUNTER_MIN
-            <= address
+            <= value
             < PRESSURE_PACKET_CURRENT_VALUE_COUNTER_MAX
         ):
-            raise FieldValueValidationException(key, address)
-        return address
+            raise FieldValueValidationException(key, value)
+        return value
 
     @validates("pressure_value")
-    def validate_pressure_value(self, key, address):
+    def validate_pressure_value(self, key, value):
         if not (
             PRESSURE_PACKET_PRESSURE_VALUE_MIN
-            <= address
+            <= value
             < PRESSURE_PACKET_PRESSURE_VALUE_MAX
         ):
-            raise FieldValueValidationException(key, address)
-        return address
+            raise FieldValueValidationException(key, value)
+        return value
 
     @validates("status")
-    def validate_status(self, key, address):
-        if address != PRESSURE_PACKET_STATUS:
-            raise FieldValueValidationException(key, address)
-        return address
+    def validate_status(self, key, value):
+        if value != PRESSURE_PACKET_STATUS:
+            raise FieldValueValidationException(key, value)
+        return value
