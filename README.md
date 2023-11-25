@@ -1,7 +1,7 @@
 # Sensor data parser
 A parser of data from a sensor.
 # Data format
-Data is a hex string from stdin that is divided into chunks of size 8, and a chunk has the following format:
+Data is a hex string that is divided into chunks of size 8, and a chunk has the following format:
 
 | Variable | Indexes | Description |
 | -- |---------| -- |
@@ -17,6 +17,7 @@ poetry install --no-interaction --no-root
 Or build a docker image from the Dockerfile file. 
 
 # Usage
+Data should be passed through stdin.
 ```sh
 python3 main.py [-h] [--create-db] [--db-path DB_PATH]
 ```
