@@ -3,8 +3,8 @@ import logging
 from src.converters.hex_string_to_pressure_packet import (
     hex_string_to_pressure_packet,
 )
-from src.expections.parsing_exception import ParsingException
-from src.expections.validation_exception import ValidationException
+from src.exceptions.parsing_exception import ParsingException
+from src.exceptions.validation_exception import ValidationException
 from src.models.pressure_packet import PressurePacket
 from src.utils.list.chunks import chunks
 

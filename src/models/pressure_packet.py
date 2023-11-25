@@ -10,7 +10,7 @@ from src.constants import (
     PRESSURE_PACKET_PRESSURE_VALUE_MIN,
     PRESSURE_PACKET_STATUS,
 )
-from src.expections.field_value_validation_exception import (
+from src.exceptions.field_value_validation_exception import (
     FieldValueValidationException,
 )
 from src.models.base import Base

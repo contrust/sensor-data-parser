@@ -1,4 +1,4 @@
-from src.expections.validation_exception import ValidationException
+from src.exceptions.validation_exception import ValidationException
 
 
 class FieldValueValidationException(ValidationException):

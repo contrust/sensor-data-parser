@@ -1,6 +1,6 @@
 import pytest
 
-from src.expections.validation_exception import ValidationException
+from src.exceptions.validation_exception import ValidationException
 
 
 @pytest.mark.parametrize("wrong_status", ("81", "0", "800"))

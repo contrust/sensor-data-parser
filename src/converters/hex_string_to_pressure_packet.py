@@ -1,5 +1,5 @@
 from src.converters.hex_string_to_int import hex_string_to_int
-from src.expections.parsing_exception import ParsingException
+from src.exceptions.parsing_exception import ParsingException
 from src.models.pressure_packet import PressurePacket
 
 

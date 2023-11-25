@@ -6,7 +6,7 @@ from src.converters.hex_string_to_pressure_packet import (
 from src.converters.pressure_packet_to_hex_string import (
     pressure_packet_to_hex_string,
 )
-from src.expections.parsing_exception import ParsingException
+from src.exceptions.parsing_exception import ParsingException
 
 
 @pytest.mark.parametrize("hex_string", ("8000000", "800000000"))

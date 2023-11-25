@@ -1,4 +1,4 @@
-from src.expections.parsing_exception import ParsingException
+from src.exceptions.parsing_exception import ParsingException
 
 
 def hex_string_to_int(hex_string: str) -> int:

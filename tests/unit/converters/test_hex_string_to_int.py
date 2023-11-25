@@ -1,7 +1,7 @@
 import pytest
 
 from src.converters.hex_string_to_int import hex_string_to_int
-from src.expections.parsing_exception import ParsingException
+from src.exceptions.parsing_exception import ParsingException
 
 
 @pytest.mark.parametrize("hex_string", ["ll", "ao", "x"])
