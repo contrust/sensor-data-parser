@@ -1,5 +1,7 @@
 test:
 	pytest
+coverage:
+	pytest --cov
 lint:
 	isort src tests
 	black --config pyproject.toml src tests
