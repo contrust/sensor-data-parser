@@ -32,7 +32,7 @@ jobs:
         context: .
         file: ./Dockerfile
         push: true
-        tags: $DOCKER_IMAGE
+        tags: ${{ env.DOCKER_IMAGE }}
 
     - name: Check lint
       run: docker run $DOCKER_IMAGE make check_lint
