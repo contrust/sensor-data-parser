@@ -27,6 +27,6 @@ def get_parser() -> argparse.ArgumentParser:
         f"{SQLITE_DB_PATH} by default",
     )
     parser.add_argument(
-        "--debug", action="store_true", help=f"set debug logging level"
+        "--debug", action="store_true", help="set debug logging level"
     )
     return parser
