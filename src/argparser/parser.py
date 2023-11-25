@@ -26,4 +26,7 @@ def get_parser() -> argparse.ArgumentParser:
         help=f"specify the path of the sqlite db where packets are gonna be saved, "
         f"{SQLITE_DB_PATH} by default",
     )
+    parser.add_argument(
+        "--debug", action="store_true", help=f"set debug logging level"
+    )
     return parser
