@@ -28,7 +28,7 @@ class PressurePacket(Base):
         if not (
             PRESSURE_PACKET_CURRENT_VALUE_COUNTER_MIN
             <= value
-            < PRESSURE_PACKET_CURRENT_VALUE_COUNTER_MAX
+            <= PRESSURE_PACKET_CURRENT_VALUE_COUNTER_MAX
         ):
             raise FieldValueValidationException(key, value)
         return value
@@ -38,7 +38,7 @@ class PressurePacket(Base):
         if not (
             PRESSURE_PACKET_PRESSURE_VALUE_MIN
             <= value
-            < PRESSURE_PACKET_PRESSURE_VALUE_MAX
+            <= PRESSURE_PACKET_PRESSURE_VALUE_MAX
         ):
             raise FieldValueValidationException(key, value)
         return value
