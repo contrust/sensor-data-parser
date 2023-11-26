@@ -14,26 +14,21 @@ argparse = "==1.4.0"
 pytest = "==7.4.3"
 pytest-faker = "==2.0.0"
 pytest-cov = "==4.1.0"
-click = "==8.1.7"
-black = "==23.11.0"
+autopep8 = "2.0.4"
 isort = "==5.12.0"
 flake8-pyproject = "==1.2.3"
 faker = "==20.1.0"
-
-[tool.flake8]
-max-line-length = 79
-max-complexity = 18
-select = ['B', 'C', 'E', 'F', 'W', 'T4', 'B9']
-extend-ignore = ['E203', 'E266', 'E501', 'W503', 'E722', 'F401']
 
 [tool.isort]
 line_length = 79
 profile = 'black'
 
-[tool.black]
-line-length = 79
-target-version = ['py310']
-include = '\.pyi?$'
+[tool.autopep8]
+max_line_length = 79
+in-place = true
+recursive = true
+verbose = true
+aggressive = 3
 
 [tool.pytest.ini_options]
 pythonpath = ["."]
