@@ -1,3 +1,3 @@
-from sensor_data_parser.internal.parsers.hex_string_parser import (
-    HexStringParser,
-)
+__all__ = ['HexStringParser']
+
+from sensor_data_parser.internal.parsers.hex_string import HexStringParser
