@@ -30,12 +30,14 @@ jobs:
           tags: '${{ env.DOCKER_IMAGE }}'
   check-lint:
     name: 'Check lint'
+    needs: build-push
     runs-on: ubuntu-latest
     steps:
       - name: Check lint
         run: docker run $DOCKER_IMAGE make check_lint
   coverage:
     name: 'Show coverage'
+    needs: build-push
     runs-on: ubuntu-latest
     steps:
       - name: Show coverage
