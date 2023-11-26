@@ -3,9 +3,7 @@ from typing import Iterable
 from sqlalchemy import Engine
 
 from sensor_data_parser.internal.models import PressurePacket
-from sensor_data_parser.internal.repositories.session_repository import (
-    SessionRepository,
-)
+from sensor_data_parser.internal.repositories.session import SessionRepository
 
 
 class PressurePacketRepository(SessionRepository):

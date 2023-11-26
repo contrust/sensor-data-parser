@@ -1,4 +1,4 @@
-from sensor_data_parser.internal.errors.validation_error import ValidationError
+from sensor_data_parser.internal.errors.validation import ValidationError
 
 
 class FieldValueValidationError(ValidationError):
