@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "sensor-data-parser"
 version = "1.0.0"
-description = "A parser of the data from a sensor."
+description = "A parser of data from a sensor."
 authors = ["Artyom Borisov <2001raf@gmail.com>"]
 
 [tool.poetry.dependencies]
