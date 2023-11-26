@@ -24,8 +24,8 @@ def main():
         PressurePacket.metadata.create_all(bind=engine)
     else:
         data = sys.stdin.read()
-        pressure_packet_repository = PressurePacketRepository(engine)
         packets = parse_pressure_packets(data)
+        pressure_packet_repository = PressurePacketRepository(engine)
         pressure_packet_repository.save_all(packets)
 
 
