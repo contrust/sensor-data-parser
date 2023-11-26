@@ -1,8 +1,6 @@
 import pytest
 
-from sensor_data_parser.internal.errors.field_value_validation_error import (
-    FieldValueValidationError,
-)
+from sensor_data_parser.internal.errors import FieldValueValidationError
 
 
 @pytest.mark.parametrize("wrong_status", ("81", "0", "800"))

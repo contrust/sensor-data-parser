@@ -1,14 +1,14 @@
 import pytest
 from faker import Faker
 
-from sensor_data_parser.config.constants import (
+from sensor_data_parser.config import (
     PRESSURE_PACKET_CURRENT_VALUE_COUNTER_MAX,
     PRESSURE_PACKET_CURRENT_VALUE_COUNTER_MIN,
     PRESSURE_PACKET_PRESSURE_VALUE_MAX,
     PRESSURE_PACKET_PRESSURE_VALUE_MIN,
     PRESSURE_PACKET_STATUS,
 )
-from sensor_data_parser.internal.models.pressure_packet import PressurePacket
+from sensor_data_parser.internal.models import PressurePacket
 
 
 @pytest.fixture()
