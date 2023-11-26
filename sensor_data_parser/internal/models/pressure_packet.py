@@ -1,18 +1,14 @@
-import logging
-
 from sqlalchemy import Column, Float, Integer, String
 from sqlalchemy.orm import DeclarativeBase, validates
 
-from sensor_data_parser.config.constants import (
+from sensor_data_parser.config import (
     PRESSURE_PACKET_CURRENT_VALUE_COUNTER_MAX,
     PRESSURE_PACKET_CURRENT_VALUE_COUNTER_MIN,
     PRESSURE_PACKET_PRESSURE_VALUE_MAX,
     PRESSURE_PACKET_PRESSURE_VALUE_MIN,
     PRESSURE_PACKET_STATUS,
 )
-from sensor_data_parser.internal.errors.field_value_validation_error import (
-    FieldValueValidationError,
-)
+from sensor_data_parser.internal.errors import FieldValueValidationError
 
 
 class Base(DeclarativeBase):
