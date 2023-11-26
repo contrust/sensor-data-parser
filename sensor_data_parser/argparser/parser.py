@@ -3,7 +3,7 @@ import argparse
 from sensor_data_parser.config.constants import SQLITE_DB_PATH
 
 
-def get_parser() -> argparse.ArgumentParser:
+def get_argument_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         description="Parse a hex string from stdin to pressure packets and save them in a db,\n"
         "where the string is divided into chunks of size 8,\n"
