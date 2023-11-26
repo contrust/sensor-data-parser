@@ -34,3 +34,4 @@ aggressive = 3
 pythonpath = ["."]
 python_files = ["test_*.py"]
 python_functions = ["test"]
+filterwarnings = ["ignore::DeprecationWarning"]
