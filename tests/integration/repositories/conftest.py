@@ -1,7 +1,7 @@
 import pytest
 
-from src.models.pressure_packet import PressurePacket
-from src.repositories.pressure_packet_repository import (
+from sensor_data_parser.internal.models.pressure_packet import PressurePacket
+from sensor_data_parser.internal.repositories.pressure_packet_repository import (
     PressurePacketRepository,
 )
 

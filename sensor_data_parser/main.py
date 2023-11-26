@@ -3,11 +3,13 @@ import sys
 
 from sqlalchemy import create_engine
 
-from src.argparser.parser import get_parser
-from src.constants import LOGGING_FORMAT
-from src.models.pressure_packet import PressurePacket
-from src.parsing.parse_pressure_packets import parse_pressure_packets
-from src.repositories.pressure_packet_repository import (
+from sensor_data_parser.argparser.parser import get_parser
+from sensor_data_parser.config.constants import LOGGING_FORMAT
+from sensor_data_parser.internal.models.pressure_packet import PressurePacket
+from sensor_data_parser.internal.parsing.parse_pressure_packets import (
+    parse_pressure_packets,
+)
+from sensor_data_parser.internal.repositories.pressure_packet_repository import (
     PressurePacketRepository,
 )
 

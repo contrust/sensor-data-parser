@@ -1,6 +1,8 @@
 import pytest
 
-from src.parsing.parse_pressure_packets import parse_pressure_packets
+from sensor_data_parser.internal.parsing.parse_pressure_packets import (
+    parse_pressure_packets,
+)
 
 
 @pytest.mark.parametrize("data", ("80ff0000", "79000000"))

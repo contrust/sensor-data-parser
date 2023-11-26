@@ -1,7 +1,7 @@
-from src.exceptions.validation_exception import ValidationException
+from sensor_data_parser.internal.errors.validation_error import ValidationError
 
 
-class FieldValueValidationException(ValidationException):
+class FieldValueValidationError(ValidationError):
     def __init__(self, field_name: str, field_value):
         self.field_name = field_name
         self.field_value = field_value

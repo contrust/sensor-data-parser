@@ -19,7 +19,7 @@ Or build a docker image from the Dockerfile file.
 # Usage
 Data should be passed through stdin.
 ```sh
-python3 main.py [-h] [--create-db] [--db-path DB_PATH]
+poetry run parser [-h] [--create-db] [--db-path DB_PATH]
 ```
 | Option | Description                           |
 | - |---------------------------------------|
@@ -27,10 +27,12 @@ python3 main.py [-h] [--create-db] [--db-path DB_PATH]
 | --create-db | Create db for saving pressure packets |
 | --db-path DB_PATH | Specify the path of the sqlite db where packets are gonna be saved, sqlite.db by default |
 # Make commands
-| Command   | Description |
-|-----------| - |
-| make test | Run tests |
-| make coverage | Run tests with coverage |
-| make lint | Format .py files in the project |
-| make check_lint | Check if .py files are formatted |
-| make install | Install poetry and all the dependencies |
+| Command         | Description                                   |
+|-----------------|-----------------------------------------------|
+| make init       | Install poetry and create virtual environment |
+| make shell      | Activate the virtual environment              |
+| make test       | Run tests                                     |
+| make coverage   | Run tests with coverage                       |
+| make lint       | Format .py files in the project               |
+| make check_lint | Check if .py files are formatted              |
+| make lock       | Create poetry.lock file from pyproject.toml   |

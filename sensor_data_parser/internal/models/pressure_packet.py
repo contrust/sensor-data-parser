@@ -1,19 +1,22 @@
 import logging
 
 from sqlalchemy import Column, Float, Integer, String
-from sqlalchemy.orm import validates
+from sqlalchemy.orm import DeclarativeBase, validates
 
-from src.constants import (
+from sensor_data_parser.config.constants import (
     PRESSURE_PACKET_CURRENT_VALUE_COUNTER_MAX,
     PRESSURE_PACKET_CURRENT_VALUE_COUNTER_MIN,
     PRESSURE_PACKET_PRESSURE_VALUE_MAX,
     PRESSURE_PACKET_PRESSURE_VALUE_MIN,
     PRESSURE_PACKET_STATUS,
 )
-from src.exceptions.field_value_validation_exception import (
-    FieldValueValidationException,
+from sensor_data_parser.internal.errors.field_value_validation_error import (
+    FieldValueValidationError,
 )
-from src.models.base import Base
+
+
+class Base(DeclarativeBase):
+    pass
 
 
 class PressurePacket(Base):
@@ -30,7 +33,7 @@ class PressurePacket(Base):
             <= value
             <= PRESSURE_PACKET_CURRENT_VALUE_COUNTER_MAX
         ):
-            raise FieldValueValidationException(key, value)
+            raise FieldValueValidationError(key, value)
         return value
 
     @validates("pressure_value")
@@ -40,11 +43,11 @@ class PressurePacket(Base):
             <= value
             <= PRESSURE_PACKET_PRESSURE_VALUE_MAX
         ):
-            raise FieldValueValidationException(key, value)
+            raise FieldValueValidationError(key, value)
         return value
 
     @validates("status")
     def validate_status(self, key, value):
         if value != PRESSURE_PACKET_STATUS:
-            raise FieldValueValidationException(key, value)
+            raise FieldValueValidationError(key, value)
         return value

@@ -1,30 +1,32 @@
 import pytest
 
-from src.converters.hex_string_to_pressure_packet import (
-    hex_string_to_pressure_packet,
+from sensor_data_parser.internal.converters.hex_string_converter import (
+    HexStringConverter,
 )
-from src.converters.pressure_packet_to_hex_string import (
-    pressure_packet_to_hex_string,
-)
-from src.exceptions.parsing_exception import ParsingException
+from sensor_data_parser.internal.errors.parsing_error import ParsingError
 
 
 @pytest.mark.parametrize("hex_string", ("8000000", "800000000"))
-def test_hex_string_to_pressure_packet_raise_parsing_exception_when_len_not_8(
+def test_hex_string_to_pressure_packet_raises_parsing_error_when_len_not_8(
     hex_string: str,
 ):
-    with pytest.raises(ParsingException):
-        hex_string_to_pressure_packet(hex_string)
+    with pytest.raises(ParsingError):
+        HexStringConverter(hex_string).to_pressure_packet()
 
 
-def test_hex_string_to_pressure_packet_returns_the_same_values(
-    pressure_packet,
+@pytest.mark.parametrize(
+    "hex_string,expected_status,expected_current_value_counter,expected_pressure_value",
+    (("80000000", "80", 0, 0), ("807fffff", "80", 127, 65535)),
+)
+def test_hex_string_to_pressure_packet_is_parsed_correctly(
+    hex_string,
+    expected_status,
+    expected_current_value_counter,
+    expected_pressure_value,
 ):
-    hex_string = pressure_packet_to_hex_string(pressure_packet)
-    parsed_packet = hex_string_to_pressure_packet(hex_string)
-    assert parsed_packet.status == pressure_packet.status
+    parsed_packet = HexStringConverter(hex_string).to_pressure_packet()
+    assert parsed_packet.status == expected_status
     assert (
-        parsed_packet.current_value_counter
-        == pressure_packet.current_value_counter
+        parsed_packet.current_value_counter == expected_current_value_counter
     )
-    assert parsed_packet.pressure_value == pressure_packet.pressure_value
+    assert parsed_packet.pressure_value == expected_pressure_value

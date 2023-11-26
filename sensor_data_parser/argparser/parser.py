@@ -1,6 +1,6 @@
 import argparse
 
-from src.constants import SQLITE_DB_PATH
+from sensor_data_parser.config.constants import SQLITE_DB_PATH
 
 
 def get_parser() -> argparse.ArgumentParser:
