@@ -6,7 +6,7 @@ from src.converters.hex_string_to_pressure_packet import (
 from src.exceptions.parsing_exception import ParsingException
 from src.exceptions.validation_exception import ValidationException
 from src.models.pressure_packet import PressurePacket
-from src.utils.list.chunks import chunks
+from src.utils.sequence.chunks import chunks
 
 
 def parse_pressure_packets(data: str) -> list[PressurePacket]:
