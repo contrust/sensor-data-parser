@@ -31,10 +31,10 @@ def test_hex_string_to_pressure_packet_raises_parsing_error_when_len_not_8(
     (("80000000", "80", 0, 0), ("807fffff", "80", 127, 65535)),
 )
 def test_hex_string_to_pressure_packet_is_parsed_correctly(
-    hex_string,
-    expected_status,
-    expected_current_value_counter,
-    expected_pressure_value,
+    hex_string: str,
+    expected_status: str,
+    expected_current_value_counter: int,
+    expected_pressure_value: float,
 ):
     parsed_packet = HexStringParser(hex_string).to_pressure_packet()
     assert parsed_packet.status == expected_status

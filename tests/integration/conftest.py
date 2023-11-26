@@ -10,6 +10,6 @@ def test_db_path() -> str:
 
 
 @pytest.fixture(scope="session")
-def engine(test_db_path) -> Engine:
+def engine(test_db_path: str) -> Engine:
     yield create_engine(f"sqlite:///{test_db_path}")
     os.remove(test_db_path)

@@ -1,11 +1,13 @@
 import pytest
 
+from sensor_data_parser.internal.models import PressurePacket
 from sensor_data_parser.internal.parsers import HexStringParser
+from sensor_data_parser.internal.repositories import PressurePacketRepository
 
 
 @pytest.mark.parametrize("data", ("80110000", "8000000080010101"))
 def test_save_all_saves_the_same_amount_of_packets(
-    pressure_packet_repository, data
+    pressure_packet_repository: PressurePacketRepository, data: str
 ):
     packets = HexStringParser(data).to_pressure_packets()
     assert pressure_packet_repository.count() == 0
@@ -14,8 +16,8 @@ def test_save_all_saves_the_same_amount_of_packets(
 
 
 def test_save_all_adds_the_same_models(
-    pressure_packet_repository, pressure_packet
-):
+        pressure_packet_repository: PressurePacketRepository,
+        pressure_packet: PressurePacket):
     db_pressure_packet = pressure_packet_repository.get(
         pressure_packet.current_value_counter
     )

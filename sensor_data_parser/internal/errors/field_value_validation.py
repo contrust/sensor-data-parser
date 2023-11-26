@@ -1,8 +1,10 @@
+from typing import Any
+
 from sensor_data_parser.internal.errors.validation import ValidationError
 
 
 class FieldValueValidationError(ValidationError):
-    def __init__(self, field_name: str, field_value):
+    def __init__(self, field_name: str, field_value: Any):
         self.field_name = field_name
         self.field_value = field_value
 

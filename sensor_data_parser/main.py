@@ -10,7 +10,7 @@ from sensor_data_parser.internal.parsers import HexStringParser
 from sensor_data_parser.internal.repositories import PressurePacketRepository
 
 
-def main():
+def main() -> None:
     parser = get_argument_parser()
     args = parser.parse_args()
     logging.basicConfig(

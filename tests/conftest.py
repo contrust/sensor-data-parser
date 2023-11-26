@@ -25,15 +25,15 @@ def current_value_counter(faker: Faker) -> int:
 
 
 @pytest.fixture()
-def pressure_value(faker: Faker) -> int:
-    return faker.random_int(
+def pressure_value(faker: Faker) -> float:
+    return float(faker.random_int(
         PRESSURE_PACKET_PRESSURE_VALUE_MIN, PRESSURE_PACKET_PRESSURE_VALUE_MAX
-    )
+    ))
 
 
 @pytest.fixture()
 def pressure_packet(
-    status, current_value_counter, pressure_value
+    status: str, current_value_counter: int, pressure_value: float
 ) -> PressurePacket:
     return PressurePacket(
         status=status,
