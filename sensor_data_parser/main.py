@@ -3,19 +3,15 @@ import sys
 
 from sqlalchemy import create_engine
 
-from sensor_data_parser.argparser.parser import get_parser
-from sensor_data_parser.config.constants import LOGGING_FORMAT
-from sensor_data_parser.internal.models.pressure_packet import PressurePacket
-from sensor_data_parser.internal.parsing.parse_pressure_packets import (
-    parse_pressure_packets,
-)
-from sensor_data_parser.internal.repositories.pressure_packet_repository import (
-    PressurePacketRepository,
-)
+from sensor_data_parser.argparser import get_argument_parser
+from sensor_data_parser.config import LOGGING_FORMAT
+from sensor_data_parser.internal.models import PressurePacket
+from sensor_data_parser.internal.parsers import HexStringParser
+from sensor_data_parser.internal.repositories import PressurePacketRepository
 
 
 def main():
-    parser = get_parser()
+    parser = get_argument_parser()
     args = parser.parse_args()
     logging.basicConfig(
         format=LOGGING_FORMAT,
@@ -26,7 +22,8 @@ def main():
         PressurePacket.metadata.create_all(bind=engine)
     else:
         data = sys.stdin.read()
-        packets = parse_pressure_packets(data)
+        pressure_packets_parser = HexStringParser(data)
+        packets = pressure_packets_parser.to_pressure_packets()
         pressure_packet_repository = PressurePacketRepository(engine)
         pressure_packet_repository.save_all(packets)
 
