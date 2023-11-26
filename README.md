@@ -10,9 +10,13 @@ Data is a hex string that is divided into chunks of size 8, and a chunk has the 
 | 4-7 | Pressure value in hex representation                                          |
 
 # Dependencies
-If you have pip installed, you can install poetry and all the dependencies with
+If you have pip installed, you can install poetry and create a virtual environment
 ```sh
-make install
+make init
+```
+And then activate it
+```sh
+make shell
 ```
 Or build a docker image from the Dockerfile file. 
 
@@ -27,12 +31,12 @@ poetry run parser [-h] [--create-db] [--db-path DB_PATH]
 | --create-db | Create db for saving pressure packets |
 | --db-path DB_PATH | Specify the path of the sqlite db where packets are gonna be saved, sqlite.db by default |
 # Make commands
-| Command         | Description                                   |
-|-----------------|-----------------------------------------------|
-| make init       | Install poetry and create virtual environment |
-| make shell      | Activate the virtual environment              |
-| make test       | Run tests                                     |
-| make coverage   | Run tests with coverage                       |
-| make lint       | Format .py files in the project               |
-| make check_lint | Check if .py files are formatted              |
-| make lock       | Create poetry.lock file from pyproject.toml   |
+| Command         | Description                                     |
+|-----------------|-------------------------------------------------|
+| make init       | Install poetry and create a virtual environment |
+| make shell      | Activate the virtual environment                |
+| make test       | Run tests                                       |
+| make coverage   | Run tests with coverage                         |
+| make lint       | Format .py files in the project                 |
+| make check_lint | Check if .py files are formatted                |
+| make lock       | Create poetry.lock file from pyproject.toml     |
