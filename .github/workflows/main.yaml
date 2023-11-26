@@ -9,7 +9,7 @@ on:
 env:
   DOCKER_IMAGE: '${{ secrets.DOCKER_USERNAME }}/sensor-data-parser:${{ github.ref_name }}'
 jobs:
-  build:
+  build-push:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -28,7 +28,13 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: '${{ env.DOCKER_IMAGE }}'
+  check-lint:
+    runs-on: ubuntu-latest
+    steps:
       - name: Check lint
         run: docker run $DOCKER_IMAGE make check_lint
+  coverage:
+    runs-on: ubuntu-latest
+    steps:
       - name: Show coverage
         run: docker run $DOCKER_IMAGE make coverage
