@@ -10,7 +10,7 @@ env:
   DOCKER_IMAGE: '${{ secrets.DOCKER_USERNAME }}/sensor-data-parser:${{ github.ref_name }}'
 jobs:
   build-push:
-    name: 'Build and push docker image'
+    name: 'Build and push'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
