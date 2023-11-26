@@ -26,7 +26,8 @@ def test_hex_string_to_pressure_packet_raises_parsing_error_when_len_not_8(
 
 
 @pytest.mark.parametrize(
-    "hex_string,expected_status,expected_current_value_counter,expected_pressure_value",
+    "hex_string,expected_status,"
+    "expected_current_value_counter,expected_pressure_value",
     (("80000000", "80", 0, 0), ("807fffff", "80", 127, 65535)),
 )
 def test_hex_string_to_pressure_packet_is_parsed_correctly(
