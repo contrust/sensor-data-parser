@@ -14,6 +14,5 @@ RUN pip install --no-cache-dir poetry && \
     rm -rf poetry.lock
 
 COPY Makefile Makefile
-COPY main.py main.py
-COPY sensor_data_parser ./src
+COPY sensor_data_parser ./sensor_data_parser
 COPY ./tests ./tests
