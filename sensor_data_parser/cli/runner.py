@@ -5,14 +5,14 @@ from typing import Sequence, TextIO
 from sqlalchemy import create_engine
 from sqlalchemy.exc import SQLAlchemyError
 
-from sensor_data_parser.arguments.parser import get_argument_parser
+from sensor_data_parser.cli.parser import get_argument_parser
 from sensor_data_parser.config import LOGGING_FORMAT
 from sensor_data_parser.internal.models import PressurePacket
 from sensor_data_parser.internal.parsers import HexStringParser
 from sensor_data_parser.internal.repositories import PressurePacketRepository
 
 
-class ArgumentsRunner:
+class CommandsRunner:
     def __init__(self, stream: TextIO = sys.stdin):
         self._parser = get_argument_parser()
         self._args = None
@@ -22,7 +22,7 @@ class ArgumentsRunner:
     def parse_arguments(self, args: Sequence[str] = None):
         self._args = self._parser.parse_args(args)
 
-    def run_commands(self):
+    def run(self):
         self._set_logging_basic_config()
         self._set_engine()
         if self._args.create_tables:

@@ -1,10 +1,10 @@
-from sensor_data_parser.arguments import ArgumentsRunner
+from sensor_data_parser.cli import CommandsRunner
 
 
 def main() -> None:
-    arguments_runner = ArgumentsRunner()
-    arguments_runner.parse_arguments()
-    arguments_runner.run_commands()
+    commands_runner = CommandsRunner()
+    commands_runner.parse_arguments()
+    commands_runner.run()
 
 
 if __name__ == "__main__":
