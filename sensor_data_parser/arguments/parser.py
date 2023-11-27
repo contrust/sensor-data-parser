@@ -18,9 +18,9 @@ def get_argument_parser() -> argparse.ArgumentParser:
         formatter_class=argparse.RawTextHelpFormatter,
     )
     parser.add_argument(
-        "--create-db",
+        "--create-tables",
         action="store_true",
-        help="create db for saving pressure packets",
+        help="create tables for saving pressure packets",
     )
     parser.add_argument(
         "--db-path",
