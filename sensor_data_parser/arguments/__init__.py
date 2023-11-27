@@ -1,4 +1,3 @@
-__all__ = ['get_argument_parser', 'ArgumentsRunner']
+__all__ = ['ArgumentsRunner']
 
-from sensor_data_parser.arguments.parser import get_argument_parser
 from sensor_data_parser.arguments.runner import ArgumentsRunner
