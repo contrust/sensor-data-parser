@@ -1,7 +1,7 @@
 # Sensor data parser
 A parser of data from a sensor.
 # Dependencies
-If you have pip installed, you can install poetry and create a virtual environment
+If you have python3.11 and pip installed, you can install poetry and create a virtual environment
 ```sh
 make init
 ```
@@ -14,7 +14,7 @@ Or build a docker image from the Dockerfile file.
 # Usage
 Data should be passed through stdin.
 ```sh
-poetry run parser [-h] [--create-db] [--db-path DB_PATH]
+python3.11 -m poetry run parser [-h] [--create-db] [--db-path DB_PATH]
 ```
 | Option            | Description                                                                              |
 |-------------------|------------------------------------------------------------------------------------------|
@@ -36,11 +36,11 @@ If a chunk has a wrong format, it's not saved to the db.
 # Example
 Create sqlite.db file with necessary tables.
 ```sh
-poetry run parser --create-tables
+python3.11 -m poetry run parser --create-tables
 ```
 Parse the data and save valid packets in sqlite.db.
 ```sh
-poetry run parser <<<"34ffffff80490000804a0000804b0000804c0000804d000079f3ffff"
+python3.11 -m poetry run parser <<<"34ffffff80490000804a0000804b0000804c0000804d000079f3ffff"
 ```
 The pressure_packet table in sqlite.db after that
 
