@@ -25,10 +25,10 @@ Data should be passed through stdin.
 ```sh
 poetry run parser [-h] [--create-db] [--db-path DB_PATH]
 ```
-| Option | Description                           |
-| - |---------------------------------------|
-| -h, --help | Show the help message and exit        |
-| --create-db | Create db for saving pressure packets |
+| Option            | Description                                                                              |
+|-------------------|------------------------------------------------------------------------------------------|
+| -h, --help        | Show the help message and exit                                                           |
+| --create-tables   | Create tables for saving pressure packets                                                |
 | --db-path DB_PATH | Specify the path of the sqlite db where packets are gonna be saved, sqlite.db by default |
 # Make commands
 | Command         | Description                                     |
