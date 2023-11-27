@@ -1,5 +1,4 @@
 init:
-	pip install --no-cache-dir poetry=="1.7.1" && \
 	poetry install --no-interaction
 shell:
 	poetry shell
