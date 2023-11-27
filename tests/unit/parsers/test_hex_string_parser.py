@@ -51,7 +51,7 @@ def test_hex_string_to_pressure_packet_is_parsed_correctly(
 def test_hex_string_to_pressure_packets_is_parsed_correctly(
         data: str, expected: list[tuple]):
     packets = HexStringParser(data).to_pressure_packets()
-    assert len(packets) == len(packets)
+    assert len(packets) == len(expected)
     for packet, expected_packet in zip(packets, expected):
         assert (packet.status, packet.current_value_counter,
                 packet.pressure_value) == expected_packet
