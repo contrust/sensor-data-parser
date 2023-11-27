@@ -5,7 +5,7 @@ from typing import Sequence, TextIO
 from sqlalchemy import create_engine
 from sqlalchemy.exc import SQLAlchemyError
 
-from sensor_data_parser.cli.parser import get_argument_parser
+from sensor_data_parser.cli.argparser import get_argument_parser
 from sensor_data_parser.config import LOGGING_FORMAT
 from sensor_data_parser.internal.models import PressurePacket
 from sensor_data_parser.internal.parsers import HexStringParser
