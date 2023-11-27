@@ -45,7 +45,7 @@ def test_saves_packets_parsed_packets(
         argument_runner_with_mocked_stream,
         pressure_packet_repository,
         stream_input):
-    argument_runner_with_mocked_stream.parse_arguments([])
+    argument_runner_with_mocked_stream.parse_arguments()
     argument_runner_with_mocked_stream.run_commands()
     packets = HexStringParser(stream_input).to_pressure_packets()
     for i in range(len(packets)):
