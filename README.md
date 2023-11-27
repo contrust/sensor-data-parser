@@ -12,6 +12,7 @@ make shell
 Or build a docker image from the Dockerfile file.
 
 # Usage
+Activate the virtual environment.
 Data should be passed through stdin.
 ```sh
 python3.11 -m poetry run parser [-h] [--create-db] [--db-path DB_PATH]
