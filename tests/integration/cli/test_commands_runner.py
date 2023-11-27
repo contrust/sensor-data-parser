@@ -6,6 +6,7 @@ from _pytest.fixtures import FixtureRequest
 from sqlalchemy import Engine
 
 from sensor_data_parser.cli import CommandsRunner
+from sensor_data_parser.internal.models import PressurePacket
 from sensor_data_parser.internal.parsers import HexStringParser
 
 
@@ -35,7 +36,7 @@ def commands_runner_with_mocked_stream(
 def test_creates_tables_when_creates_tables_option(engine, commands_runner):
     commands_runner.parse_arguments(['--create-tables'])
     commands_runner.run()
-    assert sqlalchemy.inspect(engine).has_table('pressure_packet')
+    assert sqlalchemy.inspect(engine).has_table(PressurePacket.__tablename__)
 
 
 @pytest.mark.parametrize('stream_input',
