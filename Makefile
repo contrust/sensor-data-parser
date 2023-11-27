@@ -4,15 +4,15 @@ init:
 shell:
 	python3.11 -m poetry shell
 test:
-	python3.11 -m pytest
+	pytest
 coverage:
-	python3.11 -m pytest --cov=sensor_data_parser
+	pytest --cov=sensor_data_parser
 lint:
-	python3.11 -m isort .
-	python3.11 -m autopep8 .
+	isort .
+	autopep8 .
 check_lint:
-	python3.11 -m isort --check --diff .
-	python3.11 -m flake8 .
+	isort --check --diff .
+	flake8 .
 lock:
 	python3.11 -m poetry lock
 	sudo chown -R ${USER} poetry.lock
