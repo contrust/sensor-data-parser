@@ -17,5 +17,5 @@ class PressurePacketRepository(SessionRepository):
         return self.session.query(PressurePacket).count()
 
     def save_all(self, packets: Iterable[PressurePacket]) -> None:
-        self.session.add_all(packets)
+        self.session.bulk_save_objects(packets)
         self.session.commit()
