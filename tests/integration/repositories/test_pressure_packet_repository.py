@@ -10,9 +10,10 @@ def test_save_all_saves_the_same_amount_of_packets(
     pressure_packet_repository: PressurePacketRepository, data: str
 ):
     packets = HexStringParser(data).to_pressure_packets()
-    assert pressure_packet_repository.count() == 0
+    count_before = pressure_packet_repository.count()
     pressure_packet_repository.save_all(packets)
-    assert pressure_packet_repository.count() == len(packets)
+    count_after = pressure_packet_repository.count()
+    assert count_after - count_before == len(packets)
 
 
 def test_save_all_adds_the_same_models(
