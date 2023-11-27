@@ -6,7 +6,7 @@ shell:
 test:
 	pytest
 coverage:
-	pytest --cov
+	pytest --cov=sensor_data_parser
 lint:
 	isort .
 	autopep8 .
