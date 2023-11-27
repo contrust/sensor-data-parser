@@ -40,8 +40,8 @@ def test_hex_string_to_pressure_packet_is_parsed_correctly(
 
 
 @pytest.mark.parametrize(
-    "data,expected", (("80ff0000", [()]),
-                      ("79000000", [()]),
+    "data,expected", (("80ff0000", []),
+                      ("79000000", []),
                       ("80000000", [("80", 0, 0)]),
                       ("8000000079000000800100010",
                        [('80', 0, 0), ('80', 1, 1)]),
