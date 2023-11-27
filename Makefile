@@ -1,8 +1,8 @@
 init:
-	python3.11 -m pip install --no-cache-dir poetry=="1.7.1" && \
-	python3.11 -m poetry install --no-interaction
+	pip install --no-cache-dir poetry=="1.7.1" && \
+	poetry install --no-interaction
 shell:
-	python3.11 -m poetry shell
+	poetry shell
 test:
 	pytest
 coverage:
@@ -14,5 +14,5 @@ check_lint:
 	isort --check --diff .
 	flake8 .
 lock:
-	python3.11 -m poetry lock
+	poetry lock
 	sudo chown -R ${USER} poetry.lock
