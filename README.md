@@ -9,6 +9,7 @@ Data is a hex string that is divided into chunks of size 8, and a chunk has the 
 | 2-3     | Current value counter in hex representation [00-7f]                          |
 | 4-7     | Pressure value in hex representation                                         |
 
+If a chunk has a wrong format, it's not saved to the db.
 # Dependencies
 If you have pip installed, you can install poetry and create a virtual environment
 ```sh
