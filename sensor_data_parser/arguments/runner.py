@@ -20,6 +20,8 @@ class ArgumentsRunner:
         self._stream = stream
 
     def parse_arguments(self, args: Sequence[str] = None):
+        if args is None:
+            args = []
         self._args = self._parser.parse_args(args)
 
     def run_commands(self):
