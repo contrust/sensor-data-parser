@@ -30,6 +30,24 @@ poetry run parser [-h] [--create-db] [--db-path DB_PATH]
 | -h, --help        | Show the help message and exit                                                           |
 | --create-tables   | Create tables for saving pressure packets                                                |
 | --db-path DB_PATH | Specify the path of the sqlite db where packets are gonna be saved, sqlite.db by default |
+# Example
+Create sqlite.db file with necessary tables.
+```sh
+poetry run parser --create-tables
+```
+Parse the data and save valid packets in sqlite.db.
+```sh
+poetry run parser <<<"34ffffff80490000804a0000804b0000804c0000804d000079f3ffff"
+```
+The pressure_packet table in sqlite.db after that
+
+| id | current_value_counter | status | pressure_value |
+|--|--|--|--|
+| 1 | 73 | 80 | 0 |
+| 2 | 74 | 80 | 0 |
+| 3 | 75 | 80 | 0 |
+| 4 | 76 | 80 | 0 |
+| 5 | 77 | 80 | 0 |
 # Make commands
 | Command         | Description                                     |
 |-----------------|-------------------------------------------------|
