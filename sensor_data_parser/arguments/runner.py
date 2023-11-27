@@ -1,5 +1,6 @@
 import logging
 import sys
+from typing import Sequence
 
 from sqlalchemy import create_engine
 from sqlalchemy.exc import SQLAlchemyError
@@ -17,7 +18,7 @@ class ArgumentsRunner:
         self._args = None
         self._engine = None
 
-    def parse_arguments(self, args=None):
+    def parse_arguments(self, args: Sequence[str] = None):
         self._args = self._parser.parse_args(args)
 
     def run_commands(self):
