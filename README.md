@@ -1,7 +1,7 @@
 # Sensor data parser
 A parser of data from a sensor.
 # Dependencies
-If you have Python 3.11 and pip installed, you can install poetry and create a virtual environment
+If you have Python 3.11 and poetry installed, you can create a virtual environment with all the dependencies
 ```sh
 make init
 ```
