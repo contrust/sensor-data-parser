@@ -15,7 +15,7 @@ Or build a docker image from the Dockerfile file.
 Activate the virtual environment.
 Data should be passed through stdin.
 ```sh
-python3.11 -m poetry run parser [-h] [--create-db] [--db-path DB_PATH]
+sensor_data_parser [-h] [--create-db] [--db-path DB_PATH]
 ```
 | Option            | Description                                                                              |
 |-------------------|------------------------------------------------------------------------------------------|
@@ -37,11 +37,11 @@ If a chunk has a wrong format, it's not saved to the db.
 # Example
 Create sqlite.db file with necessary tables.
 ```sh
-python3.11 -m poetry run parser --create-tables
+sensor_data_parser --create-tables
 ```
 Parse the data and save valid packets in sqlite.db.
 ```sh
-python3.11 -m poetry run parser <<<"34ffffff80490000804a0000804b0000804c0000804d000079f3ffff"
+sensor_data_parser <<<"34ffffff80490000804a0000804b0000804c0000804d000079f3ffff"
 ```
 The pressure_packet table in sqlite.db after that
 
