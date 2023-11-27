@@ -13,7 +13,7 @@ Or build a docker image from the Dockerfile file.
 
 # Usage
 Activate the virtual environment.
-Data should be passed through stdin.
+Pass data through stdin.
 ```sh
 sensor_data_parser [-h] [--create-db] [--db-path DB_PATH]
 ```
