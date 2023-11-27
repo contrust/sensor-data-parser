@@ -2,8 +2,8 @@ FROM python:3.10.6-slim-buster
 
 WORKDIR /app
 
-RUN apt-get update && \
-    apt-get install -y make="4.3-4.1build1" --no-install-recommends && \
+RUN apt update && \
+    apt install --no-install-recommends -y make && \
     rm -rf /var/lib/apt/lists/*
 
 COPY pyproject.toml poetry.lock ./
