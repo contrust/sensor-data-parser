@@ -10,7 +10,7 @@ def get_argument_parser() -> argparse.ArgumentParser:
             " in a db,\nwhere the string is divided into chunks of size"
             " 8,\nand a chunk has the following format:\nthe first 2 chars are"
             " always '80',\nthe next 2 chars is the number of a packet in"
-            " hexadecimal representation [00-7f] which should be unique,\nthe"
+            " hexadecimal representation [00-7f],\nthe"
             " next 4 chars is the pressure value of a packet in the"
             " hexadecimal representation.\n\nIf a chunk doesn't match the"
             " format, it's not saved to the db."
