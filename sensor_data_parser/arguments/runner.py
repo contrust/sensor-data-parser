@@ -1,6 +1,6 @@
 import logging
 import sys
-from typing import Sequence
+from typing import Sequence, TextIO
 
 from sqlalchemy import create_engine
 from sqlalchemy.exc import SQLAlchemyError
@@ -13,10 +13,11 @@ from sensor_data_parser.internal.repositories import PressurePacketRepository
 
 
 class ArgumentsRunner:
-    def __init__(self):
+    def __init__(self, stream: TextIO = sys.stdin):
         self._parser = get_argument_parser()
         self._args = None
         self._engine = None
+        self._stream = stream
 
     def parse_arguments(self, args: Sequence[str] = None):
         self._args = self._parser.parse_args(args)
@@ -27,7 +28,7 @@ class ArgumentsRunner:
         if self._args.create_tables:
             self._create_tables()
         else:
-            self._parse_stdin_and_save_to_db()
+            self._parse_stream_and_save_to_db()
 
     def _set_engine(self):
         self._engine = create_engine(
@@ -42,8 +43,8 @@ class ArgumentsRunner:
     def _create_tables(self):
         PressurePacket.metadata.create_all(bind=self._engine)
 
-    def _parse_stdin_and_save_to_db(self):
-        data = sys.stdin.read()
+    def _parse_stream_and_save_to_db(self):
+        data = self._stream.read()
         pressure_packets_parser = HexStringParser(data)
         packets = pressure_packets_parser.to_pressure_packets()
         pressure_packet_repository = PressurePacketRepository(self._engine)
