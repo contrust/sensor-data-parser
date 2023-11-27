@@ -25,7 +25,9 @@ def argument_runner(engine: Engine) -> ArgumentsRunner:
 
 
 @pytest.fixture()
-def argument_runner_with_mocked_stream(argument_runner, stream_input) -> ArgumentsRunner:
+def argument_runner_with_mocked_stream(
+        argument_runner,
+        stream_input) -> ArgumentsRunner:
     argument_runner._stream = StringIO(stream_input)
     return argument_runner
 
@@ -36,8 +38,13 @@ def test_creates_tables_when_creates_tables_option(engine, argument_runner):
     assert sqlalchemy.inspect(engine).has_table('pressure_packet')
 
 
-@pytest.mark.parametrize('stream_input', ('34ffffff80490000804a0000804b0000804c0000804d000079f3ffff',))
-def test_saves_packets_parsed_packets(argument_runner_with_mocked_stream, pressure_packet_repository, stream_input):
+@pytest.mark.parametrize('stream_input',
+                         ('34ffffff80490000804a0000804b'
+                          '0000804c0000804d000079f3ffff',))
+def test_saves_packets_parsed_packets(
+        argument_runner_with_mocked_stream,
+        pressure_packet_repository,
+        stream_input):
     argument_runner_with_mocked_stream.parse_arguments([])
     argument_runner_with_mocked_stream.run_commands()
     packets = HexStringParser(stream_input).to_pressure_packets()
@@ -51,6 +58,7 @@ def test_saves_packets_parsed_packets(argument_runner_with_mocked_stream, pressu
 
 
 @pytest.mark.parametrize('stream_input', ('80000000',))
-def test_does_not_raise_exception_when_no_db_tables(argument_runner_with_mocked_stream, stream_input):
+def test_does_not_raise_exception_when_no_db_tables(
+        argument_runner_with_mocked_stream, stream_input):
     argument_runner_with_mocked_stream.parse_arguments()
     argument_runner_with_mocked_stream.run_commands()
