@@ -44,18 +44,19 @@ def test_hex_string_to_pressure_packet_is_parsed_correctly(
     assert parsed_packet.pressure_value == expected_pressure_value
 
 
-@pytest.mark.parametrize("data", ("80ff0000", "79000000"))
-def test_parse_pressure_packets_does_not_return_invalid_models(data: str):
-    assert HexStringParser(data).to_pressure_packets() == []
-
-
-@pytest.mark.parametrize("data", ("80000000",))
-def test_parse_pressure_packets_returns_valid_models(data: str):
-    assert len(HexStringParser(data).to_pressure_packets()) == 1
-
-
-@pytest.mark.parametrize("data", ("800000007900000080010000",))
-def test_parse_pressure_packets_continues_parsing_after_failed_parsing(
-    data: str,
-):
-    assert len(HexStringParser(data).to_pressure_packets()) == 2
+@pytest.mark.parametrize(
+    "data,expected", (("80ff0000", [()]),
+                      ("79000000", [()]),
+                      ("80000000", [("80", 0, 0)]),
+                      ("8000000079000000800100010",
+                       [('80', 0, 0), ('80', 1, 1)]),
+                      ("807b8038000080390000803a00008"
+                       "03b0000803c0000803d0000803e00"
+                       "00803f00", [("80", 123, 32824)])))
+def test_hex_string_to_pressure_packets_is_parsed_correctly(
+        data: str, expected: list[tuple]):
+    packets = HexStringParser(data).to_pressure_packets()
+    assert len(packets) == len(packets)
+    for packet, expected_packet in zip(packets, expected):
+        assert (packet.status, packet.current_value_counter,
+                packet.pressure_value) == expected_packet
