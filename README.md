@@ -3,11 +3,11 @@ A parser of data from a sensor.
 # Data format
 Data is a hex string that is divided into chunks of size 8, and a chunk has the following format:
 
-| Indexes | Description                                                                   |
-|---------|-------------------------------------------------------------------------------|
-| 0-1     | Packet indentifier in hex representation which should always be equal to '80' |
-| 2-3     | Current value counter in hex representation [00-7f]                           |
-| 4-7     | Pressure value in hex representation                                          |
+| Indexes | Description                                                                  |
+|---------|------------------------------------------------------------------------------|
+| 0-1     | Packet identifier in hex representation which should always be equal to '80' |
+| 2-3     | Current value counter in hex representation [00-7f]                          |
+| 4-7     | Pressure value in hex representation                                         |
 
 # Dependencies
 If you have pip installed, you can install poetry and create a virtual environment
