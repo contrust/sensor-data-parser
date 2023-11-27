@@ -5,7 +5,7 @@ description = "A parser of data from a sensor."
 authors = ["Artyom Borisov <2001raf@gmail.com>"]
 
 [tool.poetry.scripts]
-parser = "sensor_data_parser.main:main"
+sensor_data_parser = "sensor_data_parser.main:main"
 
 [tool.poetry.dependencies]
 python = "~3.11"
