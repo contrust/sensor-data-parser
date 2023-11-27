@@ -18,12 +18,8 @@ def test_save_all_saves_the_same_amount_of_packets(
 def test_save_all_adds_the_same_models(
         pressure_packet_repository: PressurePacketRepository,
         pressure_packet: PressurePacket):
-    db_pressure_packet = pressure_packet_repository.get(
-        pressure_packet.current_value_counter
-    )
+    db_pressure_packet = pressure_packet_repository.get(1)
     assert db_pressure_packet is None
     pressure_packet_repository.save_all([pressure_packet])
-    db_pressure_packet = pressure_packet_repository.get(
-        pressure_packet.current_value_counter
-    )
+    db_pressure_packet = pressure_packet_repository.get(1)
     assert db_pressure_packet == pressure_packet

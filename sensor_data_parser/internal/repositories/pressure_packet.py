@@ -10,8 +10,8 @@ class PressurePacketRepository(SessionRepository):
     def __init__(self, engine: Engine):
         super().__init__(engine)
 
-    def get(self, current_value_counter: int) -> PressurePacket:
-        return self.session.get(PressurePacket, current_value_counter)
+    def get(self, packet_id: int) -> PressurePacket:
+        return self.session.get(PressurePacket, packet_id)
 
     def count(self) -> int:
         return self.session.query(PressurePacket).count()

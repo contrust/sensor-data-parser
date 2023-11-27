@@ -18,7 +18,8 @@ class Base(DeclarativeBase):
 class PressurePacket(Base):
     __tablename__ = "pressure_packet"
 
-    current_value_counter = Column(Integer(), primary_key=True)
+    id = Column(Integer(), primary_key=True, autoincrement=True)
+    current_value_counter = Column(Integer())
     status = Column(String(2))
     pressure_value = Column(Float())
 
