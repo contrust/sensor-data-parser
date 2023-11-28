@@ -12,7 +12,6 @@ make shell
 Or build a docker image from the Dockerfile file.
 
 # Usage
-Activate the virtual environment.
 Pass data through stdin.
 ```sh
 python3 -m sensor_data_parser [-h] [--create-db] [--db-path DB_PATH]
